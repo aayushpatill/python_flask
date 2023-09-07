@@ -8,7 +8,6 @@ click==8.1.6
 colorama==0.4.6
 confection==0.1.0
 cymem==2.0.7
-Django==4.2.3
 en-core-web-md @ https://github.com/explosion/spacy-models/releases/download/en_core_web_md-3.6.0/en_core_web_md-3.6.0-py3-none-any.whl#sha256=1618fc62e7aedc2b778caa3ea6e9c8280beac3b83fe7b93316cbb9e8f3abe7c5
 idna==3.4
 image==1.5.33

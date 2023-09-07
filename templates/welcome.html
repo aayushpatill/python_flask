@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <style>
+        /* Add your CSS styles here as needed */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: block;
+            margin: 20px auto;
+            width: 150px; /* Adjust the width as needed */
+        }
+
+        h1 {
+            color: #333;
+            font-size: 2em;
+            margin: 20px 0;
+        }
+
+        h2 {
+            margin-top: 20px;
+            font-size: 1.5em;
+            color: #007bff; /* Blue header text color */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007bff; /* Blue header background */
+            color: #fff;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff; /* Blue button background */
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin-right: 10px;
+        }
+
+        .btn:last-child {
+            margin-right: 0;
+        }
+
+        .btn:hover {
+            background-color: #0056b3; /* Hover color for buttons */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Welcome, {{ username }}</h2>
+            <h2>{{ current_datetime }}</h2>
+        </div>
+        <p>You are logged in as {{ username }}.</p>
+        <p>Your Transaction Point: {{ user_transaction_point }}</p>
+        <h2>Reward Wallet History:</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Batch Date</th>
+                    <th>Reward Point</th>
+                    <th>Reward Summary</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for index, row in transaction_history.iterrows() %}
+                <tr>
+                    <td>{{ row['Batch Date'] }}</td>
+                    <td style="color: {% if row['Transaction Point'] < 0 %}red{% else %}green{% endif %};">{{ row['Transaction Point'] }}</td>
+
+                    <td>{{ row['Point Reason'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ url_for('change_password') }}" class="btn">Change Password</a>
+        <a href="{{ url_for('logout') }}" class="btn">Logout</a>
+    </div>
+</body>
+</html>

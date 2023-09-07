@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 60px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .alert {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 3px;
+        }
+
+        .alert-success {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+
+        .alert-danger {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+    </style>
+    <script>
+        // JavaScript code can be added here if needed
+    </script>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login to RLHF Reward Model</h1>
+        <form method="POST">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required><br><br>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br><br>
+
+            <input type="submit" value="Login">
+        </form>
+
+        <ul>
+    {% for message in messages %}
+            {% if message[1] == 'success' %}
+                <li class="alert alert-success">Success: {{ message[0] }}</li>
+            {% elif message[1] == 'info' %}
+                <li class="alert alert-info">Info: {{ message[0] }}</li>
+            {% elif message[1] == 'warning' %}
+                <li class="alert alert-warning">Warning: {{ message[0] }}</li>
+            {% elif message[1] == 'danger' %}
+                <li class="alert alert-danger">Error: {{ message[0] }}</li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+
+    </div>
+</body>
+</html>

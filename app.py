@@ -61,14 +61,14 @@ def calculate_transaction_point(data):
                 point_reason = "Volume Targets Achieved"
             else:
                 transaction_point = -5
-                point_reason = "Volume Not Targets Achieved"
+                point_reason = "Volume Targets not Achieved"
         elif stream == "SOF" and leave_status != "Leave" and leave_status != "Holiday":
             if int(total_files) >= 25:
                 transaction_point = 10
                 point_reason = "Volume Targets Achieved"
             else:
                 transaction_point = -5
-                point_reason = "Volume Targets Not Achieved"
+                point_reason = "Volume Targets not Achieved"
         else:
             # Default case when stream is not recognized
             pass
